@@ -1,13 +1,15 @@
 import { fetcher } from '@/lib/coingecko.actions';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 
 import { cn, formatPercentage, formatCurrency } from '@/lib/utils';
 import DataTable from '@/components/DataTable';
 import CoinsPagination from '@/components/CoinsPagination';
+import { getTranslations } from 'next-intl/server';
 
 const Coins = async ({ searchParams }: NextPageProps) => {
   const { page } = await searchParams;
+  const t = await getTranslations('Coins');
 
   const currentPage = Number(page) || 1;
   const perPage = 10;
@@ -23,7 +25,7 @@ const Coins = async ({ searchParams }: NextPageProps) => {
 
   const columns: DataTableColumn<CoinMarketData>[] = [
     {
-      header: 'Rank',
+      header: t('rank'),
       cellClassName: 'rank-cell',
       cell: (coin) => (
         <>
@@ -33,7 +35,7 @@ const Coins = async ({ searchParams }: NextPageProps) => {
       ),
     },
     {
-      header: 'Token',
+      header: t('coin'),
       cellClassName: 'token-cell',
       cell: (coin) => (
         <div className="token-info">
@@ -45,12 +47,12 @@ const Coins = async ({ searchParams }: NextPageProps) => {
       ),
     },
     {
-      header: 'Price',
+      header: t('price'),
       cellClassName: 'price-cell',
       cell: (coin) => formatCurrency(coin.current_price),
     },
     {
-      header: '24h Change',
+      header: t('change_24h'),
       cellClassName: 'change-cell',
       cell: (coin) => {
         const isTrendingUp = coin.price_change_percentage_24h > 0;
@@ -69,7 +71,7 @@ const Coins = async ({ searchParams }: NextPageProps) => {
       },
     },
     {
-      header: 'Market Cap',
+      header: t('market_cap'),
       cellClassName: 'market-cap-cell',
       cell: (coin) => formatCurrency(coin.market_cap),
     },
@@ -82,7 +84,7 @@ const Coins = async ({ searchParams }: NextPageProps) => {
   return (
     <main id="coins-page">
       <div className="content">
-        <h4>All Coins</h4>
+        <h4>{t('all_coins')}</h4>
 
         <DataTable
           tableClassName="coins-table"

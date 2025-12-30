@@ -1,13 +1,16 @@
 import { fetcher } from '@/lib/coingecko.actions';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { cn, formatCurrency, formatPercentage } from '@/lib/utils';
 import { TrendingDown, TrendingUp } from 'lucide-react';
 import DataTable from '@/components/DataTable';
 import { TrendingCoinsFallback } from './fallback';
+import { getTranslations } from 'next-intl/server';
 
 const TrendingCoins = async () => {
   let trendingCoins;
+  const t = await getTranslations('Coins');
+  const tHome = await getTranslations('HomePage');
 
   try {
     trendingCoins = await fetcher<{ coins: TrendingCoin[] }>('/search/trending', undefined, 300);
@@ -18,7 +21,7 @@ const TrendingCoins = async () => {
 
   const columns: DataTableColumn<TrendingCoin>[] = [
     {
-      header: 'Name',
+      header: t('coin'),
       cellClassName: 'name-cell',
       cell: (coin) => {
         const item = coin.item;
@@ -32,7 +35,7 @@ const TrendingCoins = async () => {
       },
     },
     {
-      header: '24h Change',
+      header: t('change_24h'),
       cellClassName: 'change-cell',
       cell: (coin) => {
         const item = coin.item;
@@ -53,7 +56,7 @@ const TrendingCoins = async () => {
       },
     },
     {
-      header: 'Price',
+      header: t('price'),
       cellClassName: 'price-cell',
       cell: (coin) => formatCurrency(coin.item.data.price),
     },
@@ -61,7 +64,7 @@ const TrendingCoins = async () => {
 
   return (
     <div id="trending-coins">
-      <h4>Trending Coins</h4>
+      <h4>{tHome('trending')}</h4>
 
       <DataTable
         data={trendingCoins.coins.slice(0, 6) || []}

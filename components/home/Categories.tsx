@@ -4,15 +4,19 @@ import Image from 'next/image';
 import { cn, formatCurrency, formatPercentage } from '@/lib/utils';
 import { TrendingDown, TrendingUp } from 'lucide-react';
 import { CategoriesFallback } from './fallback';
+import { getTranslations } from 'next-intl/server';
 
 const Categories = async () => {
+  const t = await getTranslations('Coins');
+  const tHome = await getTranslations('HomePage');
+
   try {
     const categories = await fetcher<Category[]>('/coins/categories');
 
     const columns: DataTableColumn<Category>[] = [
-      { header: 'Category', cellClassName: 'category-cell', cell: (category) => category.name },
+      { header: t('category'), cellClassName: 'category-cell', cell: (category) => category.name },
       {
-        header: 'Top Gainers',
+        header: t('top_gainers'),
         cellClassName: 'top-gainers-cell',
         cell: (category) =>
           category.top_3_coins.map((coin) => (
@@ -20,7 +24,7 @@ const Categories = async () => {
           )),
       },
       {
-        header: '24h Change',
+        header: t('change_24h'),
         cellClassName: 'change-header-cell',
         cell: (category) => {
           const isTrendingUp = category.market_cap_change_24h > 0;
@@ -40,12 +44,12 @@ const Categories = async () => {
         },
       },
       {
-        header: 'Market Cap',
+        header: t('market_cap'),
         cellClassName: 'market-cap-cell',
         cell: (category) => formatCurrency(category.market_cap),
       },
       {
-        header: '24h Volume',
+        header: t('volume_24h'),
         cellClassName: 'volume-cell',
         cell: (category) => formatCurrency(category.volume_24h),
       },
@@ -53,7 +57,7 @@ const Categories = async () => {
 
     return (
       <div id="categories" className="custom-scrollbar">
-        <h4>Top Categories</h4>
+        <h4>{tHome('categories')}</h4>
 
         <DataTable
           columns={columns}

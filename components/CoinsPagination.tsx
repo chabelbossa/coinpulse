@@ -9,7 +9,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination';
-import { useRouter } from 'next/navigation';
+import { useRouter } from '@/i18n/routing';
 import { buildPageNumbers, cn, ELLIPSIS } from '@/lib/utils';
 
 const CoinsPagination = ({ currentPage, totalPages, hasMorePages }: Pagination) => {

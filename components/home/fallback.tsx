@@ -1,6 +1,6 @@
 import React from 'react';
 import DataTable from '@/components/DataTable';
-import { cn } from '@/lib/utils';
+import { useTranslations } from 'next-intl';
 
 export const CoinOverviewFallback = () => {
   return (
@@ -20,9 +20,12 @@ export const CoinOverviewFallback = () => {
 };
 
 export const TrendingCoinsFallback = () => {
+  const t = useTranslations('Coins');
+  const tHome = useTranslations('HomePage');
+
   const columns = [
     {
-      header: 'Name',
+      header: t('coin'),
       cell: () => (
         <div className="name-link">
           <div className="name-image skeleton" />
@@ -31,7 +34,7 @@ export const TrendingCoinsFallback = () => {
       ),
     },
     {
-      header: '24h Change',
+      header: t('change_24h'),
       cell: () => (
         <div className="price-change">
           <div className="change-icon skeleton" />
@@ -40,7 +43,7 @@ export const TrendingCoinsFallback = () => {
       ),
     },
     {
-      header: 'Price',
+      header: t('price'),
       cell: () => <div className="price-line skeleton" />,
     },
   ];
@@ -49,7 +52,7 @@ export const TrendingCoinsFallback = () => {
 
   return (
     <div id="trending-coins-fallback">
-      <h4>Trending Coins</h4>
+      <h4>{tHome('trending')}</h4>
       <DataTable
         data={dummyData}
         columns={columns as any}
@@ -61,14 +64,17 @@ export const TrendingCoinsFallback = () => {
 };
 
 export const CategoriesFallback = () => {
+  const t = useTranslations('Coins');
+  const tHome = useTranslations('HomePage');
+
   const columns = [
     {
-      header: 'Category',
+      header: t('category'),
       cellClassName: 'category-cell',
       cell: () => <div className="category-line skeleton" />,
     },
     {
-      header: 'Top Gainers',
+      header: t('top_gainers'),
       cellClassName: 'top-gainers-cell',
       cell: () => (
         <div className="flex gap-1">
@@ -79,7 +85,7 @@ export const CategoriesFallback = () => {
       ),
     },
     {
-      header: '24h Change',
+      header: t('change_24h'),
       cellClassName: 'change-header-cell',
       cell: () => (
         <div className="change-cell">
@@ -89,12 +95,12 @@ export const CategoriesFallback = () => {
       ),
     },
     {
-      header: 'Market Cap',
+      header: t('market_cap'),
       cellClassName: 'market-cap-cell',
       cell: () => <div className="value-skeleton-lg skeleton" />,
     },
     {
-      header: '24h Volume',
+      header: t('volume_24h'),
       cellClassName: 'volume-cell',
       cell: () => <div className="value-skeleton-md skeleton" />,
     },
@@ -104,7 +110,7 @@ export const CategoriesFallback = () => {
 
   return (
     <div id="categories-fallback">
-      <h4>Top Categories</h4>
+      <h4>{tHome('categories')}</h4>
       <DataTable
         data={dummyData}
         columns={columns as any}

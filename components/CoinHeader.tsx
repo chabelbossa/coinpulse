@@ -2,6 +2,7 @@ import { cn, formatCurrency, formatPercentage } from '@/lib/utils';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { TrendingDown, TrendingUp } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 const CoinHeader = ({
   livePriceChangePercentage24h,
@@ -14,24 +15,25 @@ const CoinHeader = ({
   const isTrendingUp = livePriceChangePercentage24h > 0;
   const isThirtyDayUp = priceChangePercentage30d > 0;
   const isPriceChangeUp = priceChange24h > 0;
+  const t = useTranslations('LiveData');
 
   const stats = [
     {
-      label: 'Today',
+      label: t('today'),
       value: livePriceChangePercentage24h,
       isUp: isTrendingUp,
       formatter: formatPercentage,
       showIcon: true,
     },
     {
-      label: '30 Days',
+      label: t('30_days'),
       value: priceChangePercentage30d,
       isUp: isThirtyDayUp,
       formatter: formatPercentage,
       showIcon: true,
     },
     {
-      label: 'Price Change (24h)',
+      label: t('price_change_24h'),
       value: priceChange24h,
       isUp: isPriceChangeUp,
       formatter: formatCurrency,
