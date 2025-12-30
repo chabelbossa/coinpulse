@@ -1,0 +1,68 @@
+{
+  "HomePage": {
+    "title": "Bienvenue sur Coinpulse",
+    "subtitle": "Votre tableau de bord crypto",
+    "categories": "Catégories principales",
+    "trending": "Monnaies tendances"
+  },
+  "Header": {
+    "title": "Coinpulse",
+    "home": "Accueil",
+    "coins": "Toutes les monnaies",
+    "search": "Modal de recherche"
+  },
+  "Coins": {
+    "all_coins": "Toutes les monnaies",
+    "rank": "Rang",
+    "coin": "Monnaie",
+    "price": "Prix",
+    "change_24h": "Variation 24h",
+    "market_cap": "Capitalisation",
+    "volume_24h": "Volume 24h",
+    "top_gainers": "Meilleurs gains",
+    "category": "Catégorie",
+    "token": "Jeton"
+  },
+  "CoinDetails": {
+    "market_cap": "Capitalisation",
+    "market_cap_rank": "Rang Capitalisation",
+    "total_volume": "Volume Total",
+    "website": "Site Web",
+    "explorer": "Explorateur",
+    "community": "Communauté",
+    "homepage": "Page d'accueil",
+    "coin_details": "Détails de la monnaie",
+    "exchange_listings": "Listes d'échange"
+  },
+  "Converter": {
+    "title": "Convertisseur {symbol}",
+    "amount": "Montant",
+    "select": "Sélectionner"
+  },
+  "LiveData": {
+    "price": "Prix",
+    "amount": "Montant",
+    "value": "Valeur",
+    "buy_sell": "Achat/Vente",
+    "buy": "Achat",
+    "sell": "Vente",
+    "time": "Temps",
+    "trend_overview": "Aperçu de la tendance",
+    "recent_trades": "Transactions récentes",
+    "today": "Aujourd'hui",
+    "30_days": "30 Jours",
+    "price_change_24h": "Variation de prix (24h)"
+  },
+  "Chart": {
+    "period": "Période :",
+    "update_frequency": "Fréquence de mise à jour :",
+    "1H": "1H",
+    "24H": "24H",
+    "7D": "7J",
+    "30D": "30J",
+    "3M": "3M",
+    "1Y": "1A",
+    "1s": "1s",
+    "1m": "1m"
+  }
+}

@@ -4,13 +4,12 @@ import { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import Image from 'next/image';
 import { formatCurrency } from '@/lib/utils';
+import { useTranslations } from 'next-intl';
 
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
@@ -18,18 +17,19 @@ import {
 const Converter = ({ symbol, icon, priceList }: ConverterProps) => {
   const [currency, setCurrency] = useState('usd');
   const [amount, setAmount] = useState('10');
+  const t = useTranslations('Converter');
 
   const convertedPrice = (parseFloat(amount) || 0) * (priceList[currency] || 0);
 
   return (
     <div id="converter">
-      <h4>{symbol.toUpperCase()} Converter</h4>
+      <h4>{t('title', {symbol: symbol.toUpperCase()})}</h4>
 
       <div className="panel">
         <div className="input-wrapper">
           <Input
             type="number"
-            placeholder="Amount"
+            placeholder={t('amount')}
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
             className="input"
@@ -51,7 +51,7 @@ const Converter = ({ symbol, icon, priceList }: ConverterProps) => {
 
           <Select value={currency} onValueChange={setCurrency}>
             <SelectTrigger className="select-trigger" value={currency}>
-              <SelectValue placeholder="Select" className="select-value">
+              <SelectValue placeholder={t('select')} className="select-value">
                 {currency.toUpperCase()}
               </SelectValue>
             </SelectTrigger>

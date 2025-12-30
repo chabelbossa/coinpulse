@@ -1,13 +1,15 @@
 import React from 'react';
 import { fetcher, getPools } from '@/lib/coingecko.actions';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { ArrowUpRight } from 'lucide-react';
 import { formatCurrency } from '@/lib/utils';
 import LiveDataWrapper from '@/components/LiveDataWrapper';
 import Converter from '@/components/Converter';
+import { getTranslations } from 'next-intl/server';
 
 const Page = async ({ params }: NextPageProps) => {
   const { id } = await params;
+  const t = await getTranslations('CoinDetails');
 
   const [coinData, coinOHLCData] = await Promise.all([
     fetcher<CoinDetailsData>(`/coins/${id}`, {
@@ -31,34 +33,34 @@ const Page = async ({ params }: NextPageProps) => {
 
   const coinDetails = [
     {
-      label: 'Market Cap',
+      label: t('market_cap'),
       value: formatCurrency(coinData.market_data.market_cap.usd),
     },
     {
-      label: 'Market Cap Rank',
+      label: t('market_cap_rank'),
       value: `# ${coinData.market_cap_rank}`,
     },
     {
-      label: 'Total Volume',
+      label: t('total_volume'),
       value: formatCurrency(coinData.market_data.total_volume.usd),
     },
     {
-      label: 'Website',
+      label: t('website'),
       value: '-',
       link: coinData.links.homepage[0],
-      linkText: 'Homepage',
+      linkText: t('homepage'),
     },
     {
-      label: 'Explorer',
+      label: t('explorer'),
       value: '-',
       link: coinData.links.blockchain_site[0],
-      linkText: 'Explorer',
+      linkText: t('explorer'),
     },
     {
-      label: 'Community',
+      label: t('community'),
       value: '-',
       link: coinData.links.subreddit_url,
-      linkText: 'Community',
+      linkText: t('community'),
     },
   ];
 
@@ -66,7 +68,7 @@ const Page = async ({ params }: NextPageProps) => {
     <main id="coin-details-page">
       <section className="primary">
         <LiveDataWrapper coinId={id} poolId={pool.id} coin={coinData} coinOHLCData={coinOHLCData}>
-          <h4>Exchange Listings</h4>
+          <h4>{t('exchange_listings')}</h4>
         </LiveDataWrapper>
       </section>
 
@@ -78,7 +80,7 @@ const Page = async ({ params }: NextPageProps) => {
         />
 
         <div className="details">
-          <h4>Coin Details</h4>
+          <h4>{t('coin_details')}</h4>
 
           <ul className="details-grid">
             {coinDetails.map(({ label, value, link, linkText }, index) => (

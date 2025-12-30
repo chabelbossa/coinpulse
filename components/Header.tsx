@@ -1,12 +1,14 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { Link, usePathname } from '@/i18n/routing';
+import LanguageSwitcher from './LanguageSwitcher';
+import { useTranslations } from 'next-intl';
 
 const Header = () => {
   const pathname = usePathname();
+  const t = useTranslations('Header');
 
   return (
     <header>
@@ -23,10 +25,10 @@ const Header = () => {
               'is-home': true,
             })}
           >
-            Home
+            {t('home')}
           </Link>
 
-          <p>Search Modal</p>
+          <p>{t('search')}</p>
 
           <Link
             href="/coins"
@@ -34,8 +36,10 @@ const Header = () => {
               'is-active': pathname === '/coins',
             })}
           >
-            All Coins
+            {t('coins')}
           </Link>
+
+          <LanguageSwitcher />
         </nav>
       </div>
     </header>

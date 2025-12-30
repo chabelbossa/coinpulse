@@ -11,6 +11,7 @@ import {
 import { CandlestickSeries, createChart, IChartApi, ISeriesApi } from 'lightweight-charts';
 import { fetcher } from '@/lib/coingecko.actions';
 import { convertOHLCData } from '@/lib/utils';
+import { useTranslations } from 'next-intl';
 
 const CandlestickChart = ({
   children,
@@ -31,6 +32,7 @@ const CandlestickChart = ({
   const [period, setPeriod] = useState(initialPeriod);
   const [ohlcData, setOhlcData] = useState<OHLCData[]>(data ?? []);
   const [isPending, startTransition] = useTransition();
+  const t = useTranslations('Chart');
 
   const fetchOHLCData = async (selectedPeriod: Period) => {
     try {
@@ -136,7 +138,7 @@ const CandlestickChart = ({
         <div className="flex-1">{children}</div>
 
         <div className="button-group">
-          <span className="text-sm mx-2 font-medium text-purple-100/50">Period:</span>
+          <span className="text-sm mx-2 font-medium text-purple-100/50">{t('period')}</span>
           {PERIOD_BUTTONS.map(({ value, label }) => (
             <button
               key={value}
@@ -144,14 +146,14 @@ const CandlestickChart = ({
               onClick={() => handlePeriodChange(value)}
               disabled={isPending}
             >
-              {label}
+              {t(label as any)}
             </button>
           ))}
         </div>
 
         {liveInterval && (
           <div className="button-group">
-            <span className="text-sm mx-2 font-medium text-purple-100/50">Update Frequency:</span>
+            <span className="text-sm mx-2 font-medium text-purple-100/50">{t('update_frequency')}</span>
             {LIVE_INTERVAL_BUTTONS.map(({ value, label }) => (
               <button
                 key={value}
@@ -159,7 +161,7 @@ const CandlestickChart = ({
                 onClick={() => setLiveInterval && setLiveInterval(value)}
                 disabled={isPending}
               >
-                {label}
+                {t(label as any)}
               </button>
             ))}
           </div>

@@ -7,38 +7,40 @@ import DataTable from '@/components/DataTable';
 import { formatCurrency, timeAgo } from '@/lib/utils';
 import { useState } from 'react';
 import CoinHeader from '@/components/CoinHeader';
+import { useTranslations } from 'next-intl';
 
 const LiveDataWrapper = ({ children, coinId, poolId, coin, coinOHLCData }: LiveDataProps) => {
   const [liveInterval, setLiveInterval] = useState<'1s' | '1m'>('1s');
   const { trades, ohlcv, price } = useCoinGeckoWebSocket({ coinId, poolId, liveInterval });
+  const t = useTranslations('LiveData');
 
   const tradeColumns: DataTableColumn<Trade>[] = [
     {
-      header: 'Price',
+      header: t('price'),
       cellClassName: 'price-cell',
       cell: (trade) => (trade.price ? formatCurrency(trade.price) : '-'),
     },
     {
-      header: 'Amount',
+      header: t('amount'),
       cellClassName: 'amount-cell',
       cell: (trade) => trade.amount?.toFixed(4) ?? '-',
     },
     {
-      header: 'Value',
+      header: t('value'),
       cellClassName: 'value-cell',
       cell: (trade) => (trade.value ? formatCurrency(trade.value) : '-'),
     },
     {
-      header: 'Buy/Sell',
+      header: t('buy_sell'),
       cellClassName: 'type-cell',
       cell: (trade) => (
         <span className={trade.type === 'b' ? 'text-green-500' : 'text-red-500'}>
-          {trade.type === 'b' ? 'Buy' : 'Sell'}
+          {trade.type === 'b' ? t('buy') : t('sell')}
         </span>
       ),
     },
     {
-      header: 'Time',
+      header: t('time'),
       cellClassName: 'time-cell',
       cell: (trade) => (trade.timestamp ? timeAgo(trade.timestamp) : '-'),
     },
@@ -68,7 +70,7 @@ const LiveDataWrapper = ({ children, coinId, poolId, coin, coinOHLCData }: LiveD
           liveInterval={liveInterval}
           setLiveInterval={setLiveInterval}
         >
-          <h4>Trend Overview</h4>
+          <h4>{t('trend_overview')}</h4>
         </CandlestickChart>
       </div>
 
@@ -76,7 +78,7 @@ const LiveDataWrapper = ({ children, coinId, poolId, coin, coinOHLCData }: LiveD
 
       {tradeColumns && (
         <div className="trades">
-          <h4>Recent Trades</h4>
+          <h4>{t('recent_trades')}</h4>
 
           <DataTable
             columns={tradeColumns}

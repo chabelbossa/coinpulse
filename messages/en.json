@@ -1,0 +1,68 @@
+{
+  "HomePage": {
+    "title": "Welcome to Coinpulse",
+    "subtitle": "Your crypto dashboard",
+    "categories": "Top Categories",
+    "trending": "Trending Coins"
+  },
+  "Header": {
+    "title": "Coinpulse",
+    "home": "Home",
+    "coins": "All Coins",
+    "search": "Search Modal"
+  },
+  "Coins": {
+    "all_coins": "All Coins",
+    "rank": "Rank",
+    "coin": "Coin",
+    "price": "Price",
+    "change_24h": "24h Change",
+    "market_cap": "Market Cap",
+    "volume_24h": "24h Volume",
+    "top_gainers": "Top Gainers",
+    "category": "Category",
+    "token": "Token"
+  },
+  "CoinDetails": {
+    "market_cap": "Market Cap",
+    "market_cap_rank": "Market Cap Rank",
+    "total_volume": "Total Volume",
+    "website": "Website",
+    "explorer": "Explorer",
+    "community": "Community",
+    "homepage": "Homepage",
+    "coin_details": "Coin Details",
+    "exchange_listings": "Exchange Listings"
+  },
+  "Converter": {
+    "title": "{symbol} Converter",
+    "amount": "Amount",
+    "select": "Select"
+  },
+  "LiveData": {
+    "price": "Price",
+    "amount": "Amount",
+    "value": "Value",
+    "buy_sell": "Buy/Sell",
+    "buy": "Buy",
+    "sell": "Sell",
+    "time": "Time",
+    "trend_overview": "Trend Overview",
+    "recent_trades": "Recent Trades",
+    "today": "Today",
+    "30_days": "30 Days",
+    "price_change_24h": "Price Change (24h)"
+  },
+  "Chart": {
+    "period": "Period:",
+    "update_frequency": "Update Frequency:",
+    "1H": "1H",
+    "24H": "24H",
+    "7D": "7D",
+    "30D": "30D",
+    "3M": "3M",
+    "1Y": "1Y",
+    "1s": "1s",
+    "1m": "1m"
+  }
+}
