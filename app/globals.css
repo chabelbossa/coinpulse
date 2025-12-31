@@ -37,10 +37,11 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-2xl: 24px;
 
   /* Brand colors */
   --color-dark-900: var(--dark-900);
@@ -54,10 +55,31 @@
   --color-green-300: var(--green-300);
   --color-red-500: var(--red-500);
   --color-yellow-500: var(--yellow-500);
+
+  /* Accent colors */
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-primary-light: var(--accent-primary-light);
+  --color-accent-secondary: var(--accent-secondary);
+
+  /* Text colors */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  /* Status colors */
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+
+  /* Shadows */
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-glow: var(--shadow-glow);
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.875rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -122,23 +144,45 @@
   --sidebar-accent: oklch(0.269 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --sidebar-ring: var(--accent-primary);
+  --ring: var(--accent-primary);
 
-  /* Brand colors */
-  --dark-900: #000510;
-  --dark-700: #0f1316;
-  --dark-500: #1a2027;
-  --dark-400: #1e2833;
+  /* Brand colors - New Slate/Cyan Palette */
+  --dark-900: #0a0e14;
+  --dark-700: #111827;
+  --dark-500: #1e293b;
+  --dark-400: #334155;
 
-  --purple-600: #1b254b;
-  --purple-100: #a3aed0;
+  --purple-600: #334155; /* Mapped to slate-700 for compatibility */
+  --purple-100: #94a3b8;
 
-  --green-500: #76da44;
-  --green-400: #2ebe7b;
-  --green-300: #99e39e;
+  --green-500: #06b6d4; /* Cyan-500 */
+  --green-400: #22d3ee;
+  --green-300: #67e8f9;
 
-  --red-500: #ff685f;
-  --yellow-500: #dabe44;
+  --red-500: #ef4444;
+  --yellow-500: #f59e0b;
+
+  /* Accent colors */
+  --accent-primary: #06b6d4;
+  --accent-primary-light: #22d3ee;
+  --accent-secondary: #0891b2;
+
+  /* Text colors */
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  /* Status colors */
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 20px rgba(6, 182, 212, 0.15);
 }
 
 @layer base {
@@ -160,15 +204,15 @@
   }
 
   .badge {
-    @apply font-medium mt-2 h-fit py-1 flex items-center gap-1;
+    @apply font-medium mt-2 h-fit py-1 px-2 flex items-center gap-1 rounded-md transition-all duration-200;
   }
 
   .badge-up {
-    @apply bg-green-600/20! text-green-600!;
+    @apply bg-success/15! text-success!;
   }
 
   .badge-down {
-    @apply bg-red-500/20! text-red-500!;
+    @apply bg-danger/15! text-danger!;
   }
 
   .skeleton {
@@ -176,24 +220,41 @@
   }
 
   header {
-    @apply border-b border-dark-400 h-20;
+    @apply border-b border-white/5 h-20 backdrop-blur-sm sticky top-0 z-50 transition-all duration-300;
 
     .inner {
       @apply flex justify-between items-center h-full;
 
       a {
-        @apply mb-0;
+        @apply mb-0 transition-all duration-300;
+      }
+
+      a:hover {
+        @apply opacity-80;
       }
 
       nav {
         @apply flex h-full items-center;
 
         .nav-link {
-          @apply px-6 py-5 flex items-center transition-all hover:text-white font-medium h-full text-purple-100 cursor-pointer;
+          @apply px-6 py-5 flex items-center transition-all duration-300 hover:text-green-400 font-medium h-full text-purple-100 cursor-pointer relative;
+        }
+
+        .nav-link::after {
+          content: '';
+          @apply absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-green-500 transition-all duration-300;
+        }
+
+        .nav-link:hover::after {
+          @apply w-1/2;
         }
 
         .nav-link.is-active {
           @apply text-white;
+        }
+
+        .nav-link.is-active::after {
+          @apply w-1/2;
         }
 
         .nav-link.is-home {
@@ -204,22 +265,22 @@
   }
 
   #candlestick-chart {
-    @apply p-3 mt-5 rounded-lg bg-dark-500;
+    @apply p-4 mt-5 rounded-xl bg-dark-500/80 border border-white/5 shadow-md hover:shadow-lg transition-all duration-300;
 
     .chart-header {
-      @apply flex flex-col gap-3 xl:flex-row xl:items-center mb-4 font-semibold text-[#e6eef8] text-[20px];
+      @apply flex flex-col gap-3 xl:flex-row xl:items-center mb-4 font-semibold text-text-primary text-[20px];
     }
 
     .button-group {
-      @apply flex gap-1 xl:gap-2 items-center;
+      @apply flex gap-1.5 xl:gap-2 items-center bg-dark-400/50 p-1 rounded-lg;
     }
 
     .config-button {
-      @apply rounded-sm border-0 cursor-pointer px-2.5 py-2 text-xs xl:text-sm text-purple-100 hover:bg-dark-400 hover:text-white;
+      @apply rounded-full border-0 cursor-pointer px-3 py-2 text-xs xl:text-sm text-purple-100 hover:bg-dark-400 hover:text-white transition-all duration-200;
     }
 
     .config-button-active {
-      @apply rounded-sm px-2.5 py-1.5 border-0 cursor-pointer text-sm text-gray-900 bg-green-500;
+      @apply rounded-full px-3 py-2 border-0 cursor-pointer text-sm text-text-primary bg-accent-primary font-medium shadow-sm;
     }
 
     .chart {
@@ -228,7 +289,9 @@
   }
 
   #coin-card {
-    @apply bg-dark-500 hover:bg-dark-400/50 transition-all rounded-lg p-5 border border-purple-600/20 hover:border-purple-600/50 cursor-pointer h-fit;
+    @apply bg-dark-500 hover:bg-dark-500 transition-all duration-300 rounded-lg p-5 border border-white/5 hover:border-accent-primary/30 cursor-pointer h-fit shadow-md hover:shadow-lg hover:-translate-y-0.5 relative overflow-hidden;
+    /* Gradient overlay effect */
+    background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0));
 
     .header {
       @apply flex gap-3 mb-4;
@@ -276,7 +339,7 @@
   }
 
   #categories {
-    @apply pt-8 mt-5 w-full bg-dark-500 rounded-xl overflow-hidden;
+    @apply pt-8 mt-5 w-full bg-dark-500/80 rounded-lg overflow-hidden border border-white/5 shadow-md backdrop-blur-sm;
 
     h4 {
       @apply text-xl md:text-2xl font-semibold mb-2 pl-5;
@@ -312,7 +375,7 @@
   }
 
   #trending-coins {
-    @apply w-full flex flex-col justify-center h-full py-4 bg-dark-500 rounded-xl;
+    @apply w-full flex flex-col justify-center h-full py-4 bg-dark-500/80 rounded-lg border border-white/5 shadow-md backdrop-blur-sm;
 
     h4 {
       @apply text-xl md:text-2xl font-semibold mb-2 px-5;
@@ -412,7 +475,7 @@
   }
 
   #coin-overview-fallback {
-    @apply w-full h-full xl:col-span-2 px-2 bg-dark-500 rounded-xl;
+    @apply w-full h-full xl:col-span-2 px-2 bg-dark-500/80 rounded-lg backdrop-blur-sm;
 
     .header {
       @apply flex-1 mb-2 flex gap-2 md:gap-3;
@@ -519,7 +582,7 @@
     }
 
     .exchange-table {
-      @apply bg-dark-500 rounded-xl overflow-hidden mt-5;
+      @apply bg-dark-500/80 rounded-lg overflow-hidden mt-5 backdrop-blur-sm border border-white/5;
 
       .exchange-name {
         @apply text-green-500 font-bold;
@@ -583,7 +646,7 @@
     }
 
     .coins-table {
-      @apply bg-dark-500 rounded-xl max-h-fit overflow-hidden;
+      @apply bg-dark-500/80 rounded-lg max-h-fit overflow-hidden backdrop-blur-sm shadow-md border border-white/5;
 
       .rank-cell {
         @apply pl-5 max-w-20! py-5 font-medium text-purple-100;
@@ -663,7 +726,7 @@
     }
 
     .search-item {
-      @apply grid grid-cols-4 gap-4 items-center justify-between data-[selected=true]:bg-dark-400 transition-all !cursor-pointer hover:bg-dark-400 py-3;
+      @apply grid grid-cols-4 gap-4 items-center justify-between data-[selected=true]:bg-dark-400 transition-all duration-200 !cursor-pointer hover:bg-dark-400/80 py-3 rounded-lg;
 
       .coin-info {
         @apply flex gap-4 items-center col-span-2;
@@ -699,11 +762,11 @@
     }
 
     .panel {
-      @apply space-y-2 bg-dark-500 px-5 py-7 rounded-lg;
+      @apply space-y-2 bg-dark-500/80 px-5 py-7 rounded-lg border border-white/5 shadow-md backdrop-blur-sm;
     }
 
     .input-wrapper {
-      @apply bg-dark-400 h-12 w-full rounded-md flex items-center justify-between py-4 pr-4;
+      @apply bg-dark-400 h-12 w-full rounded-lg flex items-center justify-between py-4 pr-4 border border-white/5 transition-all duration-200 focus-within:border-green-500/30;
 
       .input {
         @apply flex-1 text-lg! border-none font-medium bg-dark-400! focus-visible:ring-0 shadow-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none;
@@ -726,7 +789,7 @@
       }
 
       .icon {
-        @apply size-8 z-20 bg-dark-400 rounded-full p-2 text-green-500;
+        @apply size-8 z-20 bg-dark-400 rounded-full p-2 text-accent-primary shadow-sm;
       }
     }
 
@@ -812,7 +875,7 @@
   }
 
   #coin-overview {
-    @apply w-full h-full xl:col-span-2 px-2 bg-dark-500 rounded-xl;
+    @apply w-full h-full xl:col-span-2 px-2 bg-dark-500/80 rounded-lg backdrop-blur-sm shadow-md;
 
     .header {
       @apply flex-1 mb-2 flex gap-2 md:gap-3;
@@ -928,8 +991,8 @@
 
 /* Custom Scrollbar Styles */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
@@ -937,12 +1000,12 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #1e2833;
-  border-radius: 8px;
+  background: #334155;
+  border-radius: 6px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #171a34;
+  background: var(--dark-400);
 }
 
 /* Table Custom Scrollbar */
@@ -951,8 +1014,8 @@
 }
 
 .custom-scrollbar [data-slot='table-container']::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
 }
 
 .custom-scrollbar [data-slot='table-container']::-webkit-scrollbar-track {
@@ -960,10 +1023,10 @@
 }
 
 .custom-scrollbar [data-slot='table-container']::-webkit-scrollbar-thumb {
-  background: #1e2833;
-  border-radius: 8px;
+  background: #334155;
+  border-radius: 6px;
 }
 
 .custom-scrollbar [data-slot='table-container']::-webkit-scrollbar-thumb:hover {
-  background: #171a34;
+  background: var(--dark-400);
 }

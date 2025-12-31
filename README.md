@@ -1,25 +1,21 @@
 <div align="center">
   <br />
-    <a href="https://youtu.be/-vsh_GxC-vg" target="_blank">
-      <img src="public/readme/readme-hero.webp" alt="Project Banner">
-    </a>
+  <img src="public/og-image.png" alt="CoinPulse Banner" width="800">
   <br />
 
   <div>
-<img src="https://img.shields.io/badge/-Next.js-black?style=for-the-badge&logo=Next.js&logoColor=white" />
+<img src="https://img.shields.io/badge/-Next.js_16-black?style=for-the-badge&logo=Next.js&logoColor=white" />
 <img src="https://img.shields.io/badge/-Typescript-3178C6?style=for-the-badge&logo=Typescript&logoColor=white" />
-<img src="https://img.shields.io/badge/-Tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
-<img src="https://img.shields.io/badge/-shadcn%2Fui-000000?style=for-the-badge&logo=shadcnui&logoColor=white" />
+<img src="https://img.shields.io/badge/-Tailwind_v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
+<img src="https://img.shields.io/badge/-next--intl-000000?style=for-the-badge&logo=i18next&logoColor=white" />
 <img src="https://img.shields.io/badge/-CoinGecko-06D6A0?style=for-the-badge&logo=coingecko&logoColor=white" />
-<img src="https://img.shields.io/badge/-CodeRabbit-FF6B6B?style=for-the-badge&logo=coderabbit&logoColor=white" />
-
-
   </div>
 
-  <h3 align="center">CryptoPulse — Analytics Dashboard</h3>
+  <h1 align="center">🚀 CoinPulse</h1>
+  <h3 align="center">Real-time Crypto Intelligence Dashboard</h3>
 
    <div align="center">
-     Build this project step by step with our detailed tutorial on <a href="https://www.youtube.com/watch?v=XUkNR-JfHwo" target="_blank"><b>JavaScript Mastery</b></a> YouTube. Join the JSM family!
+     <p>Suivez les marchés crypto en temps réel. Dashboard avancé, graphiques interactifs et terminal haute fréquence pour traders et investisseurs.</p>
     </div>
 </div>
 
@@ -29,24 +25,11 @@
 2. ⚙️ [Tech Stack](#tech-stack)
 3. 🔋 [Features](#features)
 4. 🤸 [Quick Start](#quick-start)
-5. 🔗 [Assets](#links)
-6. 🚀 [More](#more)
-
-## 🚨 Tutorial
-
-This repository contains the code corresponding to an in-depth tutorial available on our YouTube channel, <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a>.
-
-If you prefer visual learning, this is the perfect resource for you. Follow our tutorial to learn how to build projects like these step-by-step in a beginner-friendly manner!
-
-<a href="https://youtu.be/-vsh_GxC-vg" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/1736fca5-a031-4854-8c09-bc110e3bc16d" /></a>
+5. 🌐 [Internationalization](#i18n)
 
 ## <a name="introduction">✨ Introduction</a>
 
-CryptoPulse is a high-performance analytics dashboard built with Next.js 16, TailwindCSS v4, and shadcn/ui, delivering real-time market intelligence via CoinGecko’s API and WebSockets. It features high-frequency price tracking and live orderbook streams for low-latency updates, paired with interactive TradingView candlestick charts to visualize OHLCV data with surgical precision. From a dynamic homepage showcasing global stats and trending assets to robust token pages with multi-fiat converters and advanced search tables, the platform provides a modular, developer-friendly stack optimized for speed and clarity.
-
-If you're getting started and need assistance or face any bugs, join our active Discord community with over **50k+** members. It's a place where people help each other out.
-
-<a href="https://discord.com/invite/n6EdbFJ" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/618f4872-1e10-42da-8213-1d69e486d02e" /></a>
+**CoinPulse** est un dashboard d'analyse crypto haute performance construit avec **Next.js 16**, **TailwindCSS v4** et **next-intl** pour l'internationalisation. L'application offre une intelligence de marché en temps réel via l'API CoinGecko et les WebSockets, avec des graphiques candlestick interactifs TradingView pour visualiser les données OHLCV avec précision. Du tableau de bord dynamique affichant les statistiques globales aux pages de tokens détaillées avec convertisseurs multi-devises, la plateforme fournit une stack modulaire optimisée pour la rapidité et la clarté.
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 

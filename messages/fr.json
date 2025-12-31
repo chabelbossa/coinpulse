@@ -56,12 +56,17 @@
   "Chart": {
     "period": "Période :",
     "update_frequency": "Fréquence de mise à jour :",
+    "1D": "1J",
+    "1W": "1S",
+    "1M": "1M",
+    "3M": "3M",
+    "6M": "6M",
+    "1Y": "1A",
+    "Max": "Max",
     "1H": "1H",
     "24H": "24H",
     "7D": "7J",
     "30D": "30J",
-    "3M": "3M",
-    "1Y": "1A",
     "1s": "1s",
     "1m": "1m"
   }
