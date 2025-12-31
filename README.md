@@ -1,136 +1,102 @@
 <div align="center">
   <br />
-  <img src="public/og-image.png" alt="CoinPulse Banner" width="800">
+  <img src="public/readme/dashboard-preview.png" alt="CoinPulse Dashboard" width="800" style="border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
   <br />
 
-  <div>
-<img src="https://img.shields.io/badge/-Next.js_16-black?style=for-the-badge&logo=Next.js&logoColor=white" />
-<img src="https://img.shields.io/badge/-Typescript-3178C6?style=for-the-badge&logo=Typescript&logoColor=white" />
-<img src="https://img.shields.io/badge/-Tailwind_v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
-<img src="https://img.shields.io/badge/-next--intl-000000?style=for-the-badge&logo=i18next&logoColor=white" />
-<img src="https://img.shields.io/badge/-CoinGecko-06D6A0?style=for-the-badge&logo=coingecko&logoColor=white" />
+  <h1 align="center" style="font-size: 3rem; font-weight: 800; margin-bottom: 0;">🚀 CoinPulse</h1>
+  <h3 align="center" style="font-size: 1.5rem; color: #94a3b8; font-weight: 400; margin-top: 10px;">The Ultimate Real-Time Crypto Intelligence Dashboard</h3>
+
+  <div style="margin-top: 20px;">
+    <img src="https://img.shields.io/badge/-Next.js_16-000000?style=for-the-badge&logo=Next.js&logoColor=white" />
+    <img src="https://img.shields.io/badge/-TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white" />
+    <img src="https://img.shields.io/badge/-Tailwind_v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
+    <img src="https://img.shields.io/badge/-CoinGecko_API-8DC63F?style=for-the-badge&logo=coingecko&logoColor=white" />
   </div>
 
-  <h1 align="center">🚀 CoinPulse</h1>
-  <h3 align="center">Real-time Crypto Intelligence Dashboard</h3>
-
-   <div align="center">
-     <p>Suivez les marchés crypto en temps réel. Dashboard avancé, graphiques interactifs et terminal haute fréquence pour traders et investisseurs.</p>
-    </div>
+  <p align="center" style="max-width: 600px; margin: 30px auto; font-size: 1.1rem; line-height: 1.6; color: #cbd5e1;">
+    <b>CoinPulse</b> brings institutional-grade crypto tracking to your browser. Re-engineered with a stunning <b>Slate & Cyan</b> glassmorphism interface, it delivers real-time market data, surgical-precision charting, and instant token analytics in a package that feels as good as it performs.
+  </p>
 </div>
 
-## 📋 <a name="table">Table of Contents</a>
+---
 
-1. ✨ [Introduction](#introduction)
-2. ⚙️ [Tech Stack](#tech-stack)
-3. 🔋 [Features](#features)
-4. 🤸 [Quick Start](#quick-start)
-5. 🌐 [Internationalization](#i18n)
+## 💎 Experience the New Design
 
-## <a name="introduction">✨ Introduction</a>
+We've completely overhauled the visual experience to focus on clarity, depth, and data visibility.
 
-**CoinPulse** est un dashboard d'analyse crypto haute performance construit avec **Next.js 16**, **TailwindCSS v4** et **next-intl** pour l'internationalisation. L'application offre une intelligence de marché en temps réel via l'API CoinGecko et les WebSockets, avec des graphiques candlestick interactifs TradingView pour visualiser les données OHLCV avec précision. Du tableau de bord dynamique affichant les statistiques globales aux pages de tokens détaillées avec convertisseurs multi-devises, la plateforme fournit une stack modulaire optimisée pour la rapidité et la clarté.
+<div align="center">
+ <img src="public/readme/mobile-preview.png" alt="CoinPulse Mobile UI" width="400" style="border-radius: 30px; border: 4px solid #334155;">
+</div>
 
-## <a name="tech-stack">⚙️ Tech Stack</a>
+### ✨ Key Visual Features
 
-- **[Next.js](https://nextjs.org)** is a powerful React framework for building full-stack web applications. It simplifies development with features like server-side rendering, static site generation, and API routes, enabling developers to focus on building products and shipping quickly.
+- **Deep Slate Theme**: A custom-calibrated `#0a0e14` dark palette that reduces eye strain while maximizing contrast for charts and data.
+- **Glassmorphism Spec**: Translucent cards with `backdrop-blur-sm` and subtle gradient borders create a sense of depth and hierarchy.
+- **Alive Interactions**: Hover effects, glows, and smooth transitions bring the interface to life without distracting from the data.
+- **Progressive Geometry**: A refined radius system (6px to 24px) that guides the eye naturally through information clusters.
 
-- **[TypeScript](https://www.typescriptlang.org/)** is a superset of JavaScript that adds static typing, providing better tooling, code quality, and error detection for developers. It is ideal for building large-scale applications and enhances the development experience.
+---
 
-- **[Tailwind CSS](https://tailwindcss.com/)** is a utility-first CSS framework that allows developers to rapidly build modern websites by composing styles directly in their HTML markup, which facilitates highly customized designs and ensures the smallest possible production CSS bundles.
+## 🔋 Power Features
 
-- **[Shadcn/ui](https://ui.shadcn.com/docs)** is a collection of beautifully-designed, accessible React components that you copy and paste directly into your project (it is not a traditional npm library), giving you full source code ownership and total customization control to build your own design system often utilizing Tailwind CSS.
+👉 **Real-Time Market Pulse**: Instant access to global market caps, BTC/ETH dominance, and live trending coins driven by CoinGecko's high-frequency endpoints.
 
-- **[CodeRabbit](https://jsm.dev/crypto-rabbit)** is an AI-powered code review platform that integrates into Git workflows (like GitHub and GitLab) to automatically analyze pull requests, identifying issues ranging from readability concerns to logic bugs and security flaws, and offering one-click fixes to help teams ship high-quality code faster.
+👉 **Precision Charting**: A custom implementation of **TradingView Lightweight Charts**, offering responsive, interactive candlestick visualization for any asset.
 
-- **[CoinGecko API](https://jsm.dev/crypto-gecko)** is a comprehensive and reliable RESTful API that provides real-time and historical cryptocurrency market data, including prices, market capitalization, volume, and exchange information, enabling developers to build crypto tracking, analysis, and portfolio management applications.
+👉 **Live Order Flow**: Watch trades happen in real-time with our WebSocket-powered trade history and order book visualization.
 
-- **[TradingView](https://www.tradingview.com/lightweight-charts/)** is a high-performance financial visualization library that provides interactive charting capabilities for rendering complex OHLCV data. It enables the integration of responsive candlestick charts and technical indicators, allowing users to perform professional-grade technical analysis with low-latency updates and surgical precision.
+👉 **Smart Conversion**: A context-aware currency converter that handles multi-fiat and crypto pairs instantly.
 
-## <a name="features">🔋 Features</a>
+👉 **Global Search**: Find any asset in seconds with our optimized global search engine, linking directly to deep-dive analytics pages.
 
-👉 **Home Dashboard**: Displays crucial market health indicators like **Total Market Cap** and **BTC & ETH dominance**, alongside a dynamic list of **Trending Tokens**, all retrieved instantly using the CoinGecko `/global` and `/search/trending` endpoints.
+---
 
-👉 **Token Discovery Page**: A comprehensive, sortable and searchable table featuring key token metrics (Price, 24h change, Market Cap Rank) for mass market analysis, powered by the scalable `/coins/markets` REST API and optimized with pagination for efficient browsing.
+## ⚙️ Built With Modern Tech
 
-👉 **Detailed Token Overview**: Provides an immediate summary of any selected token, including its logo, current price, and market cap rank, utilizing the `/coins/{id}` REST API for core data and the **CGSimplePrice WebSocket** for continuous, live price monitoring.
+CoinPulse is crafted with the latest reliable web technologies:
 
-👉 **Interactive Candlestick Chart**: Integrates **TradingView Lightweight Charts** to visualize market trends and price action with surgical precision, rendering multi-timeframe OHLCV data fetched from CoinGecko’s high-performance market endpoints.
+- **Next.js 16** for lightning-fast server-side rendering and edge performance.
+- **Tailwind CSS v4** for a high-performance, utility-first design system.
+- **Shadcn/ui** for accessible, robust component primitives.
+- **next-intl** for seamless internationalization and unmatched global reach.
 
-👉 **Real-Time Trades & Orderbook**: Features a live stream of market activity exactly as it happens on the exchange, using low-latency WebSockets to display a constant flow of buy/sell orders and recent trade executions.
+---
 
-👉 **Smart Currency Converter**: An interactive tool that allows users to instantly compute coin amounts into dozens of supported fiat and crypto currencies, leveraging the `/simple/supported_vs_currencies` and `/simple/price` endpoints for accurate conversions.
+## 🤸 Quick Start
 
-👉 **Exchange & Trading Pairs**: Allows users to analyze trading context by displaying aggregated lists of exchanges and available trading pairs, with all data sourced directly from the dedicated `/exchanges` and `/exchanges/{id}/tickers` REST APIs.
+Want to run CoinPulse locally?
 
-👉 **Global Search Functionality**: A powerful, unified search bar that allows users to quickly locate any crypto asset by name or symbol, linking directly to the respective Token Detail Page via the CoinGecko `/search` and `/coins/{id}` REST endpoints.
+1.  **Clone the repo**
 
-And many more, including code architecture and reusability.
+    ```bash
+    git clone https://github.com/adrianhajdin/coinpulse.git
+    cd coinpulse
+    ```
 
-## <a name="quick-start">🤸 Quick Start</a>
+2.  **Install dependencies**
 
-Follow these steps to set up the project locally on your machine.
+    ```bash
+    npm install
+    ```
 
-**Prerequisites**
+3.  **Configure Environment**
+    Create a `.env` file:
 
-Make sure you have the following installed on your machine:
+    ```env
+    COINGECKO_BASE_URL=https://pro-api.coingecko.com/api/v3
+    COINGECKO_API_KEY=your_key_here
+    ```
 
-- [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/en)
-- [npm](https://www.npmjs.com/) (Node Package Manager)
+4.  **Launch**
+    ```bash
+    npm run dev
+    ```
+    Visit `http://localhost:3000`.
 
-**Cloning the Repository**
+---
 
-```bash
-git clone https://github.com/adrianhajdin/coinpulse.git
-cd coinpulse
-```
-
-**Installation**
-
-Install the project dependencies using npm:
-
-```bash
-npm install
-```
-
-**Set Up Environment Variables**
-
-Create a new file named `.env` in the root of your project and add the following content:
-
-```env
-COINGECKO_BASE_URL=https://pro-api.coingecko.com/api/v3
-COINGECKO_API_KEY=
-
-NEXT_PUBLIC_COINGECKO_WEBSOCKET_URL=
-NEXT_PUBLIC_COINGECKO_API_KEY=
-```
-
-Replace the placeholder values with your real credentials. You can get these by signing up at: [**Example**](https://jsm.dev/example).
-
-**Running the Project**
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
-
-## <a name="links">🔗 Assets</a>
-
-Assets and snippets used in the project can be found in the **[video kit](https://jsmastery.com/video-kit/d1bcad71-45c0-477c-82c8-e71ae39ae6f4)**.
-
-<a href="https://jsmastery.com/video-kit/d1bcad71-45c0-477c-82c8-e71ae39ae6f4" target="_blank">
-  <img src="public/readme/readme-videokit.webp" alt="Video Kit Banner">
-</a>
-
-## <a name="more">🚀 More</a>
-
-**Advance your skills with Next.js Pro Course**
-
-Enjoyed creating this project? Dive deeper into our PRO courses for a richer learning adventure. They're packed with
-detailed explanations, cool features, and exercises to boost your skills. Give it a go!
-
-<a href="https://jsm.dev/crypto-jsm" target="_blank">
-  <img src="public/readme/readme-jsmpro.webp" alt="Project Banner">
-</a>
+<div align="center">
+  <p style="color: #64748b; font-size: 0.9rem;">
+    Designed & Engineered for the future of decentralized finance.
+  </p>
+</div>
