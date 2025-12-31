@@ -37,6 +37,15 @@ We've completely overhauled the visual experience to focus on clarity, depth, an
 
 ---
 
+## 📸 Portfolio Gallery
+
+<div align="center" style="display: flex; flex-direction: column; gap: 20px;">
+  <img src="public/readme/portfolio-macbook.png" alt="CoinPulse on MacBook" width="800" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+  <img src="public/readme/portfolio-iphone.png" alt="CoinPulse on iPhone" width="800" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+</div>
+
+---
+
 ## 🔋 Power Features
 
 👉 **Real-Time Market Pulse**: Instant access to global market caps, BTC/ETH dominance, and live trending coins driven by CoinGecko's high-frequency endpoints.
