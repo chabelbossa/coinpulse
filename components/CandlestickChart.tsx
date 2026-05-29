@@ -13,6 +13,19 @@ import { fetcher } from '@/lib/coingecko.actions';
 import { convertOHLCData } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
 
+type ChartTranslationKey =
+  | 'period'
+  | 'update_frequency'
+  | '1D'
+  | '1W'
+  | '1M'
+  | '3M'
+  | '6M'
+  | '1Y'
+  | 'Max'
+  | '1s'
+  | '1m';
+
 const CandlestickChart = ({
   children,
   data,
@@ -33,6 +46,7 @@ const CandlestickChart = ({
   const [ohlcData, setOhlcData] = useState<OHLCData[]>(data ?? []);
   const [isPending, startTransition] = useTransition();
   const t = useTranslations('Chart');
+  const tc = (key: ChartTranslationKey) => t(key);
 
   const fetchOHLCData = async (selectedPeriod: Period) => {
     try {
@@ -71,12 +85,6 @@ const CandlestickChart = ({
       width: container.clientWidth,
     });
     const series = chart.addSeries(CandlestickSeries, getCandlestickConfig());
-
-    const convertedToSeconds = ohlcData.map(
-      (item) => [Math.floor(item[0] / 1000), item[1], item[2], item[3], item[4]] as OHLCData,
-    );
-
-    series.setData(convertOHLCData(convertedToSeconds));
     chart.timeScale().fitContent();
 
     chartRef.current = chart;
@@ -146,14 +154,16 @@ const CandlestickChart = ({
               onClick={() => handlePeriodChange(value)}
               disabled={isPending}
             >
-              {t(label as any)}
+              {tc(label as ChartTranslationKey)}
             </button>
           ))}
         </div>
 
         {liveInterval && (
           <div className="button-group">
-            <span className="text-sm mx-2 font-medium text-purple-100/50">{t('update_frequency')}</span>
+            <span className="text-sm mx-2 font-medium text-purple-100/50">
+              {t('update_frequency')}
+            </span>
             {LIVE_INTERVAL_BUTTONS.map(({ value, label }) => (
               <button
                 key={value}
@@ -161,7 +171,7 @@ const CandlestickChart = ({
                 onClick={() => setLiveInterval && setLiveInterval(value)}
                 disabled={isPending}
               >
-                {t(label as any)}
+                {tc(label as ChartTranslationKey)}
               </button>
             ))}
           </div>

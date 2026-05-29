@@ -17,7 +17,13 @@ const Header = () => {
           href="/"
           className="hover:drop-shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all duration-300"
         >
-          <Image src="/logo.svg" alt="CoinPulse logo" width={132} height={40} />
+          <Image
+            src="/logo.svg"
+            alt="CoinPulse logo"
+            width={132}
+            height={40}
+            style={{ width: 132, height: 'auto' }}
+          />
         </Link>
 
         <nav>

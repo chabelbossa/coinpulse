@@ -2,7 +2,28 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-const WS_BASE = `${process.env.NEXT_PUBLIC_COINGECKO_WEBSOCKET_URL}?x_cg_pro_api_key=${process.env.NEXT_PUBLIC_COINGECKO_API_KEY}`;
+const getWebSocketUrl = () => {
+  const baseUrl = process.env.NEXT_PUBLIC_COINGECKO_WEBSOCKET_URL;
+  const apiKey = process.env.NEXT_PUBLIC_COINGECKO_API_KEY;
+
+  if (!baseUrl || !apiKey) {
+    return null;
+  }
+
+  try {
+    const url = new URL(baseUrl);
+
+    if (url.protocol !== 'wss:' && url.protocol !== 'ws:') {
+      return null;
+    }
+
+    url.searchParams.set('x_cg_pro_api_key', apiKey);
+
+    return url.toString();
+  } catch {
+    return null;
+  }
+};
 
 export const useCoinGeckoWebSocket = ({
   coinId,
@@ -10,7 +31,7 @@ export const useCoinGeckoWebSocket = ({
   liveInterval,
 }: UseCoinGeckoWebSocketProps): UseCoinGeckoWebSocketReturn => {
   const wsRef = useRef<WebSocket | null>(null);
-  const subscribed = useRef(<Set<string>>new Set());
+  const subscribed = useRef<Set<string>>(new Set());
 
   const [price, setPrice] = useState<ExtendedPriceData | null>(null);
   const [trades, setTrades] = useState<Trade[]>([]);
@@ -19,7 +40,13 @@ export const useCoinGeckoWebSocket = ({
   const [isWsReady, setIsWsReady] = useState(false);
 
   useEffect(() => {
-    const ws = new WebSocket(WS_BASE);
+    const wsUrl = getWebSocketUrl();
+
+    if (!wsUrl) {
+      return;
+    }
+
+    const ws = new WebSocket(wsUrl);
     wsRef.current = ws;
 
     const send = (payload: Record<string, unknown>) => ws.send(JSON.stringify(payload));
@@ -79,7 +106,7 @@ export const useCoinGeckoWebSocket = ({
 
     ws.onclose = () => setIsWsReady(false);
 
-    ws.onerror = (error) => {
+    ws.onerror = () => {
       setIsWsReady(false);
     };
 

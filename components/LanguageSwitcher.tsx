@@ -25,8 +25,12 @@ export default function LanguageSwitcher() {
         <SelectValue placeholder="Language" />
       </SelectTrigger>
       <SelectContent className="min-w-[70px] bg-dark-400 border-purple-100/10 text-white">
-        <SelectItem value="en" className="focus:bg-purple-100/10 focus:text-white cursor-pointer">EN</SelectItem>
-        <SelectItem value="fr" className="focus:bg-purple-100/10 focus:text-white cursor-pointer">FR</SelectItem>
+        <SelectItem value="en" className="focus:bg-purple-100/10 focus:text-white cursor-pointer">
+          EN
+        </SelectItem>
+        <SelectItem value="fr" className="focus:bg-purple-100/10 focus:text-white cursor-pointer">
+          FR
+        </SelectItem>
       </SelectContent>
     </Select>
   );

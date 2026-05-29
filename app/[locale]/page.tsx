@@ -7,10 +7,8 @@ import {
   TrendingCoinsFallback,
 } from '@/components/home/fallback';
 import Categories from '@/components/home/Categories';
-import { getTranslations } from 'next-intl/server';
 
 const Page = async () => {
-  const t = await getTranslations('HomePage');
   return (
     <main className="main-container">
       <section className="home-grid">

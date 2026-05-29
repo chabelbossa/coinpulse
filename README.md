@@ -92,15 +92,51 @@ Want to run CoinPulse locally?
     Create a `.env` file:
 
     ```env
-    COINGECKO_BASE_URL=https://pro-api.coingecko.com/api/v3
+    COINGECKO_BASE_URL=https://api.coingecko.com/api/v3
     COINGECKO_API_KEY=your_key_here
+    NEXT_PUBLIC_COINGECKO_WEBSOCKET_URL=
+    NEXT_PUBLIC_COINGECKO_API_KEY=
     ```
 
+    `NEXT_PUBLIC_COINGECKO_WEBSOCKET_URL` is optional. If it is empty or not a valid `ws://` / `wss://` URL, the app keeps the historical chart and disables the live WebSocket stream instead of opening a broken relative socket.
+
 4.  **Launch**
+
     ```bash
     npm run dev
     ```
+
     Visit `http://localhost:3000`.
+
+---
+
+## ✅ Local Verification
+
+Last verified on 2026-05-29 with the local `.env.local` CoinGecko configuration:
+
+```bash
+npm run lint
+npx tsc --noEmit
+npm run build
+npm audit --omit=dev --audit-level=moderate
+```
+
+Observed results:
+
+- ESLint completed with 0 errors and 0 warnings.
+- TypeScript completed with `npx tsc --noEmit`.
+- Production build completed successfully on Next.js 16.2.6.
+- Production dependency audit reports 0 vulnerabilities after upgrading Next/React and pinning PostCSS 8.5.10 through `overrides`.
+- Browser smoke check completed on `http://127.0.0.1:3210/en`, `/en/coins`, and `/en/coins/bitcoin`.
+- The Bitcoin detail page was rechecked after fixing the hydration mismatch and invalid relative WebSocket URL; the verified browser run had 0 console errors.
+
+Current screenshots:
+
+![CoinPulse home](docs/screenshots/home-en.png)
+
+![CoinPulse coins list](docs/screenshots/coins-en.png)
+
+![CoinPulse Bitcoin details](docs/screenshots/bitcoin-en.png)
 
 ---
 

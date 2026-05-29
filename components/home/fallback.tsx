@@ -2,6 +2,10 @@ import React from 'react';
 import DataTable from '@/components/DataTable';
 import { useTranslations } from 'next-intl';
 
+type FallbackRow = {
+  id: number;
+};
+
 export const CoinOverviewFallback = () => {
   return (
     <div id="coin-overview-fallback">
@@ -23,7 +27,7 @@ export const TrendingCoinsFallback = () => {
   const t = useTranslations('Coins');
   const tHome = useTranslations('HomePage');
 
-  const columns = [
+  const columns: DataTableColumn<FallbackRow>[] = [
     {
       header: t('coin'),
       cell: () => (
@@ -48,15 +52,15 @@ export const TrendingCoinsFallback = () => {
     },
   ];
 
-  const dummyData = Array.from({ length: 6 }, (_, i) => ({ id: i }));
+  const dummyData: FallbackRow[] = Array.from({ length: 6 }, (_, i) => ({ id: i }));
 
   return (
     <div id="trending-coins-fallback">
       <h4>{tHome('trending')}</h4>
       <DataTable
         data={dummyData}
-        columns={columns as any}
-        rowKey={(item: any) => item.id}
+        columns={columns}
+        rowKey={(item) => item.id}
         tableClassName="trending-coins-table"
       />
     </div>
@@ -67,7 +71,7 @@ export const CategoriesFallback = () => {
   const t = useTranslations('Coins');
   const tHome = useTranslations('HomePage');
 
-  const columns = [
+  const columns: DataTableColumn<FallbackRow>[] = [
     {
       header: t('category'),
       cellClassName: 'category-cell',
@@ -106,15 +110,15 @@ export const CategoriesFallback = () => {
     },
   ];
 
-  const dummyData = Array.from({ length: 10 }, (_, i) => ({ id: i }));
+  const dummyData: FallbackRow[] = Array.from({ length: 10 }, (_, i) => ({ id: i }));
 
   return (
     <div id="categories-fallback">
       <h4>{tHome('categories')}</h4>
       <DataTable
         data={dummyData}
-        columns={columns as any}
-        rowKey={(item: any) => item.id}
+        columns={columns}
+        rowKey={(item) => item.id}
         tableClassName="mt-3"
       />
     </div>

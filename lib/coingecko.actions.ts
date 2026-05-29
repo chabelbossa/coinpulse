@@ -2,11 +2,18 @@
 
 import qs from 'query-string';
 
-const BASE_URL = process.env.COINGECKO_BASE_URL;
-const API_KEY = process.env.COINGECKO_API_KEY;
+const requireEnv = (key: string) => {
+  const value = process.env[key];
 
-if (!BASE_URL) throw new Error('Could not get base url');
-if (!API_KEY) throw new Error('Could not get api key');
+  if (!value) {
+    throw new Error(`Missing required environment variable: ${key}`);
+  }
+
+  return value;
+};
+
+const BASE_URL = requireEnv('COINGECKO_BASE_URL');
+const API_KEY = requireEnv('COINGECKO_API_KEY');
 
 export async function fetcher<T>(
   endpoint: string,
@@ -28,7 +35,7 @@ export async function fetcher<T>(
     } as Record<string, string>,
     next: { revalidate },
   });
-  console.log('response', response);
+
   if (!response.ok) {
     const errorBody: CoinGeckoErrorBody = await response.json().catch(() => ({}));
 
